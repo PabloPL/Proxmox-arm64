@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source <(curl -s https://raw.githubusercontent.com/tteck/Proxmox/main/misc/build.func)
+source <(curl -s https://raw.githubusercontent.com/PabloPL/Proxmox-arm64/arm64/misc/build.func)
 # Copyright (c) 2021-2024 tteck
 # Author: tteck (tteckster)
 # License: MIT
@@ -24,7 +24,11 @@ var_disk="0.3"
 var_cpu="1"
 var_ram="256"
 var_os="alpine"
-var_version="3.19"
+if [ "$(dpkg --print-architecture)" == "amd64" ]; then
+  var_version="3.19"
+else
+  var_version="3.18"
+fi
 variables
 color
 catch_errors
